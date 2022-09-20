@@ -9,17 +9,23 @@
         rounded
         outlined
         prepend-inner-icon="mdi-magnify"
+        color="rgb(168, 176, 48)"
+        class="pa-5"
         @keyup="geosearch () "
       />
-
-      <!-- <pre>{{ geoResults }}</pre> -->
-      <div v-for="(location, idx) in geoResults " :key="idx">
-        <a class="suggestions" @click="asignCoord(location.y,location.x),showRealTime(), showForecast()">
-          {{ location.label }}
-        </a>
+      <div>
+        <h3>
+          You are here:
+        </h3>
+        <p>{{ selectedPlace }}</p>
+        <!-- <pre>{{ geoResults }}</pre> -->
+        <div v-for="(location, idx) in geoResults " :key="idx" class="px-5">
+          <a class="suggestions" @click="asignCoord(location.y,location.x),showRealTime(), showForecast(), showChoice(location.label)">
+            {{ location.label }}
+          </a>
           <!-- <div>{{ location.x }}</div>
-        <div>{{ location.y }}</div> -->
-        </a>
+            <div>{{ location.y }}</div> -->
+        </div>
       </div>
 
       <LeafletMap v-if="forecastResults" :prediction="forecastResults" />
@@ -27,7 +33,8 @@
 
       <RealTime v-if="forecastResults" :realtime="realTimeResults" class="ma-5" />
       <TabComponent v-if="forecastResults" :forecast="forecastResults.forecast" class="ma-5" />
-      <!-- <ForeCast v-if="forecastResults" :forecast="forecastResults.forecast" class="ma-5" /> -->
+        <!-- <ForeCast v-if="forecastResults" :forecast="forecastResults.forecast" class="ma-5" /> -->
+      </h3>
     </v-col>
   </v-row>
 </template>
@@ -55,36 +62,48 @@ export default {
       realTimeResults: {},
       forecastResults: null,
       geoResults: [],
-      geoCoords: ''
+      geoCoords: '',
+      selectedPlace: ''
     }
   },
   methods: {
     async showRealTime () {
       if (this.place.length > 0) {
         this.realTimeResults = await API.searchRealTime(this.geoCoords)
-        console.log(`Result of the request ${this.realTimeResults}`)
+        // console.log(`Result of the request ${this.realTimeResults}`)
         this.geoResults = []
+        this.place = ''
       }
     },
     async showForecast () {
       if (this.place.length > 0) {
         this.forecastResults = await API.searchForecast(this.geoCoords, '3')
         console.log(`Result of the request ${this.forecastResults}`)
-        console.log(this.forecastResults)
+        // console.log(this.forecastResults)
         this.geoResults = []
+        this.place = ''
       }
     },
     async geosearch () {
       this.geoResults = await provider.search({ query: this.place })
-      console.log(`Geosearch result: ${this.place}`)
     },
     asignCoord (lat, long) {
       this.geoCoords = lat.toString() + ',' + long.toString()
-      console.log(this.geoCoords)
+      console.log(`Geosearch result: ${this.geoResults[0]}`)
+      // console.log(this.geoCoords)
+    },
+    showChoice (suggestion) {
+      this.selectedPlace = suggestion
     }
   }
 }
 </script>
+
+  <style scoped>
+  .suggestions {
+    color: #a8b030;
+  }
+  </style>
 
 <style scoped>
 .suggestions {
