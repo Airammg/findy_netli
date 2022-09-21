@@ -17,7 +17,7 @@
   color: #a8b030;
   text-decoration: none;
   animation-name: my-animation;
-  animation-duration: 3s;
+  animation-duration: 5s;
   animation-direction: alternate;
   animation-iteration-count: infinite;
 
