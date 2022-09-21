@@ -28,11 +28,11 @@
 
 @keyframes my-animation {
   from {
-    box-shadow: 0 3px 300px -200px rgb(168 176 48 / 100%);
+    box-shadow: 0;
   }
 
   to {
-    box-shadow: 0 55px 49px 16px rgb(168 176 48 / 100%);
+    box-shadow: 0 0 10px 5px rgb(168 176 48 / 100%);
   }
 }
 </style>
