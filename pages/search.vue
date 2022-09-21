@@ -25,8 +25,8 @@
       <LeafletMap v-if="forecastResults" :prediction="forecastResults" />
       <LeafletMap v-else />
 
-      <RealTime v-if="forecastResults" :realtime="realTimeResults" :selected-place="selectedPlace" class="mt-5" />
-      <TabComponent v-if="forecastResults" :forecast="forecastResults.forecast" class="mt-5" />
+      <RealTime v-if="forecastResults" :realtime="realTimeResults" :selectedplace="selectedPlace" class="mt-5" />
+      <TabComponent v-if="forecastResults" :forecast="forecastResults.forecast" :selectedplace="selectedPlace" class="mt-5" />
     </v-col>
   </v-row>
 </template>

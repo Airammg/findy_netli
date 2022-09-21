@@ -5,17 +5,20 @@
     <div v-if="forecast" class="container-fluid">
       <!-- <img :src="forecast.day.condition.icon" alt=""> -->
       <v-row dense>
-        <v-col>
-          <img :src="forecast.day.condition.icon" alt="" width="150px" height="auto">
+        <v-col align="center" class="pt-5">
+          <img :src="forecast.day.condition.icon" alt="" width="200px" height="auto">
           <div class="temperature">
-            {{ forecast.day.avgtemp_c }} °C
+            {{ forecast.day.avgtemp_c }} <span>°C</span>
           </div>
         </v-col>
         <v-col>
           <v-card-subtitle class="font-weight-black">
-            {{ forecast.day.condition.text }}
+            {{ selectedplace }}
+            <!-- {{ realtime.location.region }},
+              {{ realtime.location.country }} -->
           </v-card-subtitle>
           <v-card-text center>
+            <b> {{ forecast.day.condition.text }} </b>
             <div>Max/min: {{ forecast.day.maxtemp_c }} / {{ forecast.day.mintemp_c }} °C</div>
             <div>Max. wind: {{ forecast.day.maxwind_kph }} Km/h</div>
             <div>Total precip: {{ forecast.day.totalprecip_mm }} mm</div>
@@ -57,6 +60,12 @@ export default {
       default () {
         return {}
       }
+    },
+    selectedplace: {
+      type: String,
+      default () {
+        return ''
+      }
     }
   }
 }
@@ -64,7 +73,15 @@ export default {
 
 <style>
 div .temperature {
+  font-size: 60px;
+  text-align: center;
+  color: rgb(127 127 127);
+}
+
+div .temperature span {
   font-size: 30px;
   text-align: center;
+  color: rgb(127 127 127);
 }
+
 </style>

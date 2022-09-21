@@ -1,9 +1,9 @@
 <template>
-  <v-app class="">
+  <v-app>
     <NuxtLink to="/" class="mx-auto">
-      <logo-findy width="200px" class="mx-auto mt-10" />
+      <logo-findy width="250px" class="mx-auto mt-10" />
     </NuxtLink>
-    <Nuxt />
+    <Nuxt class="ma-2" />
   </v-app>
 </template>
 

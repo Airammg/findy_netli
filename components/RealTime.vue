@@ -1,18 +1,18 @@
 <template>
-  <v-card class="justify-center mx-0 pa-3" width="100%" elevation="5">
+  <v-card class="mx-0 pa-3" width="100%" justify-center elevation="5">
     <div v-if="realtime.location">
       <div class="container-fluid">
         <v-row dense>
-          <v-col>
+          <v-col align="center" class="pt-5">
             <div>
               <img
                 :src="realtime.current.condition.icon"
                 alt=""
-                width="150px"
+                width="200px"
                 height="auto"
               >
               <div class="temperature">
-                {{ realtime.current.temp_c }} °C
+                {{ realtime.current.temp_c }} <span>°C</span>
               </div>
             </div>
 
@@ -21,7 +21,7 @@
           <v-col>
             <!-- {{ realtime.location.name }} -->
             <v-card-subtitle class="font-weight-black">
-              {{ selectedPlace }}
+              {{ selectedplace }}
               <!-- {{ realtime.location.region }},
                 {{ realtime.location.country }} -->
             </v-card-subtitle>
@@ -68,7 +68,7 @@ export default {
         return {}
       }
     },
-    selectedPlace: {
+    selectedplace: {
       type: String,
       default () {
         return ''

@@ -1,7 +1,7 @@
 <template>
   <div id="app" width="100%">
     <v-app id="inspire">
-      <v-card class="justify-center mx-0 px-0" width="100%" elevation="5">
+      <v-card class="justify-center" width="100%" elevation="5">
         <!-- <v-card-title background-color="#a8b030">
           Three Days Forecast
         </v-card-title> -->
@@ -36,13 +36,22 @@
         </v-tabs>
         <v-tabs-items v-model="tab">
           <v-tab-item value="tab-1">
-            <ForecastDay :forecast="forecast.forecastday[0]" />
+            <ForecastDay
+              :forecast="forecast.forecastday[0]"
+              :selectedplace="selectedplace"
+            />
           </v-tab-item>
           <v-tab-item value="tab-2">
-            <ForecastDay :forecast="forecast.forecastday[1]" />
+            <ForecastDay
+              :forecast="forecast.forecastday[1]"
+              :selectedplace="selectedplace"
+            />
           </v-tab-item>
           <v-tab-item value="tab-3">
-            <ForecastDay :forecast="forecast.forecastday[2]" />
+            <ForecastDay
+              :forecast="forecast.forecastday[2]"
+              :selectedplace="selectedplace"
+            />
           </v-tab-item>
         </v-tabs-items>
       </v-card>
@@ -61,6 +70,12 @@ export default {
       type: Object,
       default () {
         return {}
+      }
+    },
+    selectedplace: {
+      type: String,
+      default () {
+        return ''
       }
     }
   },
