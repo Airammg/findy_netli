@@ -10,31 +10,23 @@
         outlined
         prepend-inner-icon="mdi-magnify"
         color="rgb(168, 176, 48)"
-        class="pa-5"
+        class=""
         @keyup="geosearch () "
       />
       <div>
-        <h3>
-          You are here:
-        </h3>
-        <p>{{ selectedPlace }}</p>
         <!-- <pre>{{ geoResults }}</pre> -->
         <div v-for="(location, idx) in geoResults " :key="idx" class="px-5">
           <a class="suggestions" @click="asignCoord(location.y,location.x),showRealTime(), showForecast(), showChoice(location.label)">
             {{ location.label }}
           </a>
-          <!-- <div>{{ location.x }}</div>
-            <div>{{ location.y }}</div> -->
         </div>
       </div>
 
       <LeafletMap v-if="forecastResults" :prediction="forecastResults" />
       <LeafletMap v-else />
 
-      <RealTime v-if="forecastResults" :realtime="realTimeResults" class="ma-5" />
-      <TabComponent v-if="forecastResults" :forecast="forecastResults.forecast" class="ma-5" />
-        <!-- <ForeCast v-if="forecastResults" :forecast="forecastResults.forecast" class="ma-5" /> -->
-      </h3>
+      <RealTime v-if="forecastResults" :realtime="realTimeResults" :selected-place="selectedPlace" class="mt-5" />
+      <TabComponent v-if="forecastResults" :forecast="forecastResults.forecast" class="mt-5" />
     </v-col>
   </v-row>
 </template>
@@ -49,7 +41,7 @@ import TabComponent from '@/components/TabComponent.vue'
 const provider = new OpenStreetMapProvider()
 
 export default {
-  name: 'IndexPage',
+  name: 'SearchPage',
   components: {
     RealTime,
     // ForeCast,
@@ -98,12 +90,6 @@ export default {
   }
 }
 </script>
-
-  <style scoped>
-  .suggestions {
-    color: #a8b030;
-  }
-  </style>
 
 <style scoped>
 .suggestions {

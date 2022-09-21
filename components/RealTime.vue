@@ -1,31 +1,33 @@
 <template>
-  <v-card class="justify-center">
-    <v-card-title class="text-center">
-      Real Time weather
-    </v-card-title>
-    <v-card-text>
-      <div v-if="realtime.location">
-        <div class="container" fluid>
-          <div>
-            <b>{{ realtime.current.condition.text }}</b>
-            <img
-              :src="realtime.current.condition.icon"
-              alt=""
-              class="d-block"
-            >
-          </div>
-          <v-row dense>
-            <v-col>
-              <h4>Location</h4>
-              <div>Time Zone: {{ realtime.location.tz_id }}</div>
-              <div>Country: {{ realtime.location.country }}</div>
-              <div>Location: {{ realtime.location.name }}</div>
-              <!-- <div>Latitud: {{realtime.location.lat}}</div>
-                <div>Longitud: {{realtime.location.lon}}</div> -->
-            </v-col>
-            <v-col>
-              <h4>Parameters</h4>
-              <div>Temperature: {{ realtime.current.temp_c }} °C</div>
+  <v-card class="justify-center mx-0 pa-3" width="100%" elevation="5">
+    <div v-if="realtime.location">
+      <div class="container-fluid">
+        <v-row dense>
+          <v-col>
+            <div>
+              <img
+                :src="realtime.current.condition.icon"
+                alt=""
+                width="150px"
+                height="auto"
+              >
+              <div class="temperature">
+                {{ realtime.current.temp_c }} °C
+              </div>
+            </div>
+
+            <!-- <div>Time Zone: {{ realtime.location.tz_id }}</div> -->
+          </v-col>
+          <v-col>
+            <!-- {{ realtime.location.name }} -->
+            <v-card-subtitle class="font-weight-black">
+              {{ selectedPlace }}
+              <!-- {{ realtime.location.region }},
+                {{ realtime.location.country }} -->
+            </v-card-subtitle>
+            <v-card-text>
+              <b>{{ realtime.current.condition.text }}</b>
+
               <div>
                 Feels like: {{ realtime.current.feelslike_c }} °C
               </div>
@@ -40,14 +42,14 @@
               </div>
               <div>Humidity: {{ realtime.current.humidity }} %</div>
               <div>UV factor: {{ realtime.current.uv }}</div>
-            </v-col>
-          </v-row>
-        </div>
-        <div>
-          Updated on: <b>{{ realtime.current.last_updated }}</b>
-        </div>
+              <div class="updated">
+                {{ realtime.current.last_updated }}
+              </div>
+            </v-card-text>
+          </v-col>
+        </v-row>
       </div>
-    </v-card-text>
+    </div>
   </v-card>
 </template>
 
@@ -65,7 +67,18 @@ export default {
       default () {
         return {}
       }
+    },
+    selectedPlace: {
+      type: String,
+      default () {
+        return ''
+      }
     }
   }
 }
 </script>
+<style scoped>
+  .updated {
+    color: #a8b030;
+  }
+</style>

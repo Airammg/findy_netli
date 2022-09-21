@@ -1,16 +1,16 @@
 <template>
-  <div id="app">
+  <div id="app" width="100%">
     <v-app id="inspire">
-      <v-card>
-        <v-card-title background-color="#a8b030">
+      <v-card class="justify-center mx-0 px-0" width="100%" elevation="5">
+        <!-- <v-card-title background-color="#a8b030">
           Three Days Forecast
-        </v-card-title>
+        </v-card-title> -->
         <v-tabs
           v-model="tab"
           background-color="#a8b030"
-          centered
           height="100px"
           dark
+          centered
           icons-and-text
           active
         >
