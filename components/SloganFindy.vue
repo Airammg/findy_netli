@@ -32,7 +32,7 @@
   }
 
   to {
-    box-shadow: 0 0 0 2px rgb(168 176 48 / 100%);
+    box-shadow: 0 55px 49px 16px rgb(168 176 48 / 100%);
   }
 }
 </style>
