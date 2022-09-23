@@ -1,7 +1,7 @@
 <template>
   <div class="slogan">
     We <NuxtLink class="look-link" to="/search">
-      look
+      look up
     </NuxtLink> for you.
   </div>
 </template>
@@ -14,10 +14,10 @@
 
 .look-link {
   /* position: fixed; */
-  color: #a8b030;
+  color: #af429a;
   text-decoration: none;
   animation-name: my-animation;
-  animation-duration: 5s;
+  animation-duration: 1s;
   animation-direction: alternate;
   animation-iteration-count: infinite;
 
@@ -28,11 +28,11 @@
 
 @keyframes my-animation {
   from {
-    box-shadow: 0;
+    text-shadow: 0;
   }
 
   to {
-    box-shadow: 0 0 10px 5px rgb(168 176 48 / 100%);
+    text-shadow: 0 0 5px #4b058c;
   }
 }
 </style>

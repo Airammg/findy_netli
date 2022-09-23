@@ -1,6 +1,6 @@
 <template>
-  <v-row justify="center" class="mt-5">
-    <v-col cols="12" sm="8" md="6">
+  <v-row justify="center">
+    <v-col cols="12" xs="12" sm="12" md="10">
       <v-text-field
         v-model="place"
         label="search for places"
@@ -9,23 +9,29 @@
         rounded
         outlined
         prepend-inner-icon="mdi-magnify"
-        color="rgb(168, 176, 48)"
+        color="#af429a"
         class=""
+        dense
         @keyup="geosearch () "
       />
       <div>
         <!-- <pre>{{ geoResults }}</pre> -->
-        <div v-for="(location, idx) in geoResults " :key="idx" class="px-5">
-          <a class="suggestions" @click="asignCoord(location.y,location.x),showRealTime(), showForecast(), showChoice(location.label)">
-            {{ location.label }}
-          </a>
+        <div class="faded-effect">
+          <div v-for="(location, idx) in geoResults " :key="idx" class="px-5">
+            <a class="suggestions" @click="asignCoord(location.y,location.x),showRealTime(), showForecast(), showChoice(location.label)">
+              {{ location.label }}
+            </a>
+          </div>
         </div>
       </div>
 
-      <LeafletMap v-if="forecastResults" :prediction="forecastResults" />
-      <LeafletMap v-else />
-
+      <LeafletMap v-if="forecastResults" :prediction="forecastResults" class="map" />
+      <LeafletMap v-else class="map" />
+    </v-col>
+    <v-col cols="12" xs="12" sm="4" md="3">
       <RealTime v-if="forecastResults" :realtime="realTimeResults" :selectedplace="selectedPlace" class="mt-5" />
+    </v-col>
+    <v-col cols="12" xs="12" sm="8" md="7">
       <TabComponent v-if="forecastResults" :forecast="forecastResults.forecast" :selectedplace="selectedPlace" class="mt-5" />
     </v-col>
   </v-row>
@@ -35,21 +41,20 @@
 import { OpenStreetMapProvider } from 'leaflet-geosearch'
 import API from '@/services/API'
 import RealTime from '~/components/RealTime.vue'
-// import ForeCast from '@/components/ForeCast.vue'
 import LeafletMap from '@/components/LeafletMap.vue'
 import TabComponent from '@/components/TabComponent.vue'
-const provider = new OpenStreetMapProvider()
+// const provider = new OpenStreetMapProvider()
 
 export default {
   name: 'SearchPage',
   components: {
     RealTime,
-    // ForeCast,
     LeafletMap,
     TabComponent
   },
   data () {
     return {
+      provider: null,
       place: '',
       realTimeResults: {},
       forecastResults: null,
@@ -57,6 +62,9 @@ export default {
       geoCoords: '',
       selectedPlace: ''
     }
+  },
+  mounted () {
+    this.provider = new OpenStreetMapProvider()
   },
   methods: {
     async showRealTime () {
@@ -77,7 +85,7 @@ export default {
       }
     },
     async geosearch () {
-      this.geoResults = await provider.search({ query: this.place })
+      this.geoResults = await this.provider.search({ query: this.place })
     },
     asignCoord (lat, long) {
       this.geoCoords = lat.toString() + ',' + long.toString()
@@ -93,6 +101,16 @@ export default {
 
 <style scoped>
 .suggestions {
-  color: #a8b030;
+  color: #af429a;
+}
+
+.faded-effect {
+  background: linear-gradient(to top, #fff, #af429a);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.map {
+  border: 1px solid #af429a;
 }
 </style>

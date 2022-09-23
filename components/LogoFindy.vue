@@ -53,7 +53,7 @@
 
 <style scoped type="text/css">
 .st0 {
-  fill: #a8b030;
+  fill: #af429a;
 }
 
 .st1 {

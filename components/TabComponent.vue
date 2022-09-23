@@ -7,7 +7,7 @@
         </v-card-title> -->
         <v-tabs
           v-model="tab"
-          background-color="#a8b030"
+          background-color="#af429a"
           height="100px"
           dark
           centered
