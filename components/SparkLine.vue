@@ -1,10 +1,10 @@
 <template>
   <div>
-    <pre>
+    <!-- <pre>
 
-      <!-- {{ hours[0] }} -->
-      <!-- {{ selectedGradient }} -->
-    </pre>
+      {{ hours[0] }}
+      {{ selectedGradient }}
+    </pre> -->
     <card-subtitle>
       &#x21f5;{{ getMinAndMax }}
       <div class="title-name">
@@ -12,8 +12,9 @@
       </div>
     </card-subtitle>
     <v-sparkline
+      class="sparkline"
       :value="selectedParam"
-      :gradient="gradients[selectedGradient]"
+      :gradient="selectedGradient"
       :smooth="radius || false"
       :padding="padding"
       :line-width="width"
@@ -25,15 +26,19 @@
       :labels="hourLabels"
       auto-draw
       color="grey"
-    />,
+    />
   </div>
 </template>
 
 <script>
 const gradients = {
+  default: ['black'],
   temperature: ['red', 'yellow', 'cyan'],
   wind: ['red', 'blue', 'yellow'],
-  uv: ['red', 'orange', 'violet']
+  uv: ['red', 'orange', 'violet'],
+  humidity: ['cyan'],
+  rain: ['blue'],
+  snow: ['purple']
 
 }
 
@@ -63,7 +68,7 @@ export default {
     hourtemperature: 0,
     width: 2,
     radius: 10,
-    padding: 8,
+    padding: 9,
     lineCap: 'round',
     gradientDirection: 'top',
     gradients,
@@ -93,15 +98,26 @@ export default {
       return ` ${min} / ${max} ${this.unit} `
     },
     selectedGradient () {
-      const gradientName = this.titlename.toLowerCase()
-      return gradientName
+      if (this.parameter === 'temp_c') { return this.gradients.temperature }
+      if (this.parameter === 'wind_kph') { return this.gradients.wind }
+      if (this.parameter === 'uv') { return this.gradients.uv }
+      if (this.parameter === 'humidity') { return this.gradients.humidity }
+      if (this.parameter === 'chance_of_rain') { return this.gradients.rain }
+      if (this.parameter === 'chance_of_snow') { return this.gradients.snow }
+
+      return this.gradients.default
     }
+
   }
 }
 </script>
 
 <style scoped>
+  .sparkline {
+    font-size: 18px;
+  }
+
   .title-name {
-    font-size: 12px;
+    font-size: 0.9rem;
   }
 </style>

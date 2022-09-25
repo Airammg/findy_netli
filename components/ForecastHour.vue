@@ -34,7 +34,26 @@
     <SparkLine
       :hours="hour"
       :parameter="uv"
-      :titlename="'UV'"
+      :titlename="'UV radiation'"
+      :unit="''"
+    />
+    <SparkLine
+      :hours="hour"
+      :parameter="humidity"
+      :titlename="'Humidity'"
+      :unit="'%'"
+    />
+    <SparkLine
+      :hours="hour"
+      :parameter="rain"
+      :titlename="'Rain probability'"
+      :unit="'%'"
+    />
+    <SparkLine
+      :hours="hour"
+      :parameter="snow"
+      :titlename="'Snow probability'"
+      :unit="'%'"
     />
   </div>
 </template>
@@ -65,6 +84,9 @@ export default {
       temperature: 'temp_c',
       wind: 'wind_kph',
       uv: 'uv',
+      humidity: 'humidity',
+      rain: 'chance_of_rain',
+      snow: 'chance_of_snow',
       hourLabels: ['1:00', '4:00', '7:00', '10:00', '13:00', '16:00', '19:00', '22:00']
     }
   },
@@ -78,6 +100,6 @@ export default {
 
 <style scoped>
 .hour-label {
-  font-size: 10px;
+  font-size: 0.9rem;
 }
 </style>

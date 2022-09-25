@@ -1,38 +1,47 @@
 <template>
   <v-row justify="center">
-    <v-col cols="12" xs="12" sm="12" md="10">
-      <v-text-field
-        v-model="place"
-        label="search for places"
-        type="text"
-        filled
-        rounded
-        outlined
-        prepend-inner-icon="mdi-magnify"
-        color="#af429a"
-        class=""
-        dense
-        @keyup="geosearch () "
-      />
-      <div>
+    <v-col cols="12" xs="12" sm="12" md="10" class="">
+      <v-col cols="12" sm="8" md="8" lg="6" class="mx-auto">
+        <v-text-field
+          v-model="place"
+          label="search for places"
+          type="text"
+          filled
+          rounded
+          outlined
+          prepend-inner-icon="mdi-magnify"
+          color="#af429a"
+          class=""
+          dense
+          @keyup="geosearch () "
+        />
         <!-- <pre>{{ geoResults }}</pre> -->
         <div class="faded-effect">
           <div v-for="(location, idx) in geoResults " :key="idx" class="px-5">
-            <a class="suggestions" @click="asignCoord(location.y,location.x),showRealTime(), showForecast(), showChoice(location.label)">
+            <a
+              class="suggestions"
+              @click="asignCoord(location.y,location.x),showRealTime(), showForecast(), showChoice(location.label)"
+            >
               {{ location.label }}
             </a>
           </div>
         </div>
-      </div>
-
-      <LeafletMap v-if="forecastResults" :prediction="forecastResults" class="map" />
-      <LeafletMap v-else class="map" />
+      </v-col>
+      <v-col cols="12">
+        <LeafletMap v-if="forecastResults" :prediction="forecastResults" class="map" />
+        <LeafletMap v-else class="map" />
+      </v-col>
     </v-col>
     <v-col cols="12" xs="12" sm="4" md="3">
-      <RealTime v-if="forecastResults" :realtime="realTimeResults" :selectedplace="selectedPlace" class="mt-5" />
+      <RealTime v-if="forecastResults" :realtime="realTimeResults" :selectedplace="selectedPlaceShort" class="mt-5" />
     </v-col>
     <v-col cols="12" xs="12" sm="8" md="7">
-      <TabComponent v-if="forecastResults" :forecast="forecastResults.forecast" :selectedplace="selectedPlace" class="mt-5" />
+      <TabComponent
+        v-if="forecastResults"
+        :forecast="forecastResults.forecast"
+        :selectedplace="selectedPlaceFull"
+        class="mt-5"
+      />
     </v-col>
   </v-row>
 </template>
@@ -60,7 +69,8 @@ export default {
       forecastResults: null,
       geoResults: [],
       geoCoords: '',
-      selectedPlace: ''
+      selectedPlaceShort: '',
+      selectedPlaceFull: ''
     }
   },
   mounted () {
@@ -93,7 +103,13 @@ export default {
       // console.log(this.geoCoords)
     },
     showChoice (suggestion) {
-      this.selectedPlace = suggestion
+      this.selectedPlaceFull = suggestion
+      this.selectedPlaceShort = this.shorten(suggestion)
+    },
+    shorten (sth) {
+      const chunk = sth.split(',')
+      const LastChunkIndex = chunk.length - 1
+      return [chunk[0], chunk[LastChunkIndex]].toString()
     }
   }
 }
