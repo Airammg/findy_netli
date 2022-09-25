@@ -1,61 +1,58 @@
 <template>
-  <div v-if="hour" class="grey lighten-4 rounded-lg px-2">
-    <!-- <pre>{{ hour }} </pre> -->
-    <div class="mb-5  rounded-lg">
-      <v-row dense>
-        <v-col v-for="(time, idx) in selectedHours" :key="idx" class="grey lighten-3 ">
-          <div class="d-flex justify-center">
-            <img :src="time.condition.icon" alt="" width="35px" height="auto">
-          </div>
-          <div class="hour-label d-flex justify-center">
-            {{ hourLabels[idx] }}
-          </div>
-        </v-col>
-      </v-row>
+  <v-card width="100%" elevation="0">
+    <div v-if="hour" class="grey lighten-4 rounded-lg px-2">
+      <!-- <pre>{{ hour }} </pre> -->
+      <div class="mb-5  rounded-lg">
+        <v-row dense>
+          <v-col v-for="(time, idx) in selectedHours" :key="idx" class="grey lighten-3 ">
+            <div class="d-flex justify-center">
+              <img :src="time.condition.icon" alt="" width="35px" height="auto">
+            </div>
+            <div class="hour-label d-flex justify-center">
+              {{ hourLabels[idx] }}
+            </div>
+          </v-col>
+        </v-row>
+      </div>
+
+      <SparkLine
+        :hours="hour"
+        :parameter="temperature"
+        :titlename="'Temperature'"
+        :unit="'°C'"
+      />
+      <SparkLine
+        :hours="hour"
+        :parameter="wind"
+        :unit="'km/h'"
+        :titlename="'Wind'"
+      />
+      <SparkLine
+        :hours="hour"
+        :parameter="uv"
+        :titlename="'UV radiation'"
+        :unit="''"
+      />
+      <SparkLine
+        :hours="hour"
+        :parameter="humidity"
+        :titlename="'Humidity'"
+        :unit="'%'"
+      />
+      <SparkLine
+        :hours="hour"
+        :parameter="rain"
+        :titlename="'Rain probability'"
+        :unit="'%'"
+      />
+      <SparkLine
+        :hours="hour"
+        :parameter="snow"
+        :titlename="'Snow probability'"
+        :unit="'%'"
+      />
     </div>
-
-    <!-- <pre>
-
-      {{ rainArray }}
-      {{ forecast.hour }}
-    </pre> -->
-    <SparkLine
-      :hours="hour"
-      :parameter="temperature"
-      :titlename="'Temperature'"
-      :unit="'°C'"
-    />
-    <SparkLine
-      :hours="hour"
-      :parameter="wind"
-      :unit="'km/h'"
-      :titlename="'Wind'"
-    />
-    <SparkLine
-      :hours="hour"
-      :parameter="uv"
-      :titlename="'UV radiation'"
-      :unit="''"
-    />
-    <SparkLine
-      :hours="hour"
-      :parameter="humidity"
-      :titlename="'Humidity'"
-      :unit="'%'"
-    />
-    <SparkLine
-      :hours="hour"
-      :parameter="rain"
-      :titlename="'Rain probability'"
-      :unit="'%'"
-    />
-    <SparkLine
-      :hours="hour"
-      :parameter="snow"
-      :titlename="'Snow probability'"
-      :unit="'%'"
-    />
-  </div>
+  </v-card>
 </template>
 
 <script>

@@ -1,32 +1,29 @@
 <template>
   <div>
-    <!-- <pre>
-
-      {{ hours[0] }}
-      {{ selectedGradient }}
-    </pre> -->
-    <card-subtitle>
-      &#x21f5;{{ getMinAndMax }}
-      <div class="title-name">
-        {{ titlename }}
-      </div>
-    </card-subtitle>
-    <v-sparkline
-      class="sparkline"
-      :value="selectedParam"
-      :gradient="selectedGradient"
-      :smooth="radius || false"
-      :padding="padding"
-      :line-width="width"
-      :stroke-linecap="lineCap"
-      :gradient-direction="gradientDirection"
-      :fill="fill"
-      :type="type"
-      :auto-line-width="autoLineWidth"
-      :labels="hourLabels"
-      auto-draw
-      color="grey"
-    />
+    <v-card class="my-2 px-2" elevation="0">
+      <card-subtitle>
+        &#x21f5;{{ getMinAndMax }}
+        <div class="title-name">
+          {{ titlename }}
+        </div>
+      </card-subtitle>
+      <v-sparkline
+        class="sparkline"
+        :value="selectedParam"
+        :gradient="selectedGradient"
+        :smooth="radius || false"
+        :padding="padding"
+        :line-width="width"
+        :stroke-linecap="lineCap"
+        :gradient-direction="gradientDirection"
+        :fill="fill"
+        :type="type"
+        :auto-line-width="autoLineWidth"
+        :labels="hourLabels"
+        auto-draw
+        color="grey"
+      />
+    </v-card>
   </div>
 </template>
 
@@ -68,7 +65,7 @@ export default {
     hourtemperature: 0,
     width: 2,
     radius: 10,
-    padding: 9,
+    padding: 10,
     lineCap: 'round',
     gradientDirection: 'top',
     gradients,

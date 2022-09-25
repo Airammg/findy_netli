@@ -2,7 +2,7 @@
   <v-card class="mx-0 pb-3 px-0 " width="100%" justify-center elevation="5">
     <div v-if="realtime.location">
       <div class="container-fluid">
-        <v-card-title class="branding-color mb-3 rounded rounded-b-0" min-height="100px">
+        <v-card-title class="branding-color mb-3 rounded rounded-b-0 location-real-time" min-height="100px">
           {{ selectedplace }}
         </v-card-title>
         <v-row dense>
@@ -92,6 +92,10 @@ export default {
 }
 </script>
 <style scoped>
+.location-real-time {
+  min-height: 100px;
+}
+
 .branding-color {
   background-color: #af429a;
   color: #fff;

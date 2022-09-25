@@ -1,13 +1,9 @@
 <template>
   <div id="map-wrap" style="height: 30vh;">
     <client-only>
-      <l-map
-        :zoom="10"
-        :center="[prediction.location.lat, prediction.location.lon]"
-      >
-        <l-tile-layer
-          url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
-        />
+      <l-map :zoom="10" :center="[prediction.location.lat, prediction.location.lon]">
+        <l-tile-layer :url="selectedMap" />
+
         <l-marker
           :lat-lng="[
             prediction.location.lat,
@@ -16,11 +12,17 @@
         />
       </l-map>
     </client-only>
+    <SelectMap @updateMap="updateMap" />
+    <div id="demo" />
   </div>
 </template>
 
 <script>
+import SelectMap from '@/components/SelectMap'
 export default {
+  components: {
+    SelectMap
+  },
   props: {
     prediction: {
       type: Object,
@@ -33,7 +35,23 @@ export default {
         }
       }
     }
-  }
 
+  },
+  data () {
+    return {
+      map: '//tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png'
+    }
+  },
+  computed: {
+    selectedMap () {
+      return this.map
+    }
+  },
+  methods: {
+    updateMap (params) {
+      this.map = params
+    }
+  }
 }
+
 </script>
