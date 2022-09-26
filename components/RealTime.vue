@@ -2,12 +2,12 @@
   <v-card class="mx-0 pb-3 px-0 " width="100%" justify-center elevation="5">
     <div v-if="realtime.location">
       <div class="container-fluid">
-        <v-card-title class="branding-color mb-3 rounded rounded-b-0 location-real-time" min-height="100px">
+        <div class="branding-texture mb-3 rounded rounded-b-0 pa-5 location-real-time d-flex align-center" min-height="100px">
           {{ selectedplace }}
-        </v-card-title>
+        </div>
         <v-row dense>
           <v-col class="pt-2 px-4" xs="3" sm="12" align="center">
-            <div class="grey lighten-3 rounded-lg  py-10 ">
+            <div class="grey lighten-3 rounded-lg  py-10 icon-bg">
               <img :src="realtime.current.condition.icon" alt="" width="100px" height="auto">
             </div>
           </v-col>
@@ -40,6 +40,7 @@
               <div class="updated">
                 {{ realtime.current.last_updated }}
               </div>
+              <ToolTip />
             </v-card-text>
           </v-col>
         </v-row>
@@ -56,6 +57,7 @@ import IconHumidity from '@/components/IconHumidity.vue'
 import IconUv from '@/components/IconUv.vue'
 import IconTherm from '@/components/IconTherm.vue'
 import IconPressure from '@/components/IconPressure.vue'
+import ToolTip from '@/components/ToolTip'
 
 export default {
 
@@ -66,7 +68,8 @@ export default {
     IconHumidity,
     IconUv,
     IconTherm,
-    IconPressure
+    IconPressure,
+    ToolTip
   },
 
   props: {
@@ -94,11 +97,6 @@ export default {
 <style scoped>
 .location-real-time {
   min-height: 100px;
-}
-
-.branding-color {
-  background-color: #af429a;
-  color: #fff;
 }
 
 .updated {

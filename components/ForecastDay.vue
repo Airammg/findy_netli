@@ -4,7 +4,7 @@
 
     <div v-if="forecast" class="container-fluid px-3">
       <!-- <img :src="forecast.day.condition.icon" alt=""> -->
-      <v-card-title class="main-color location">
+      <v-card-title class="main-color location px-0">
         {{ selectedplace }}
       </v-card-title>
       <v-row dense>
@@ -16,7 +16,7 @@
           class="pt-5 "
           align="center"
         >
-          <div class="grey lighten-3 rounded-lg  py-10">
+          <div class="grey lighten-3 rounded-lg  py-10 icon-bg">
             <img :src="forecast.day.condition.icon" alt="" width="100px" height="auto">
           </div>
         </v-col>

@@ -13,7 +13,6 @@
       </l-map>
     </client-only>
     <SelectMap @updateMap="updateMap" />
-    <div id="demo" />
   </div>
 </template>
 
@@ -39,7 +38,7 @@ export default {
   },
   data () {
     return {
-      map: '//tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png'
+      map: 'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png'
     }
   },
   computed: {

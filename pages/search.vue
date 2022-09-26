@@ -1,6 +1,11 @@
 <template>
-  <v-row justify="center">
-    <v-col cols="12" xs="12" sm="12" md="10" class="">
+  <v-row class="adjustment" justify="center">
+    <v-col cols="12" class="mt-5" align="center">
+      <NuxtLink to="/" class="">
+        <LogoFindy class="logo-search  " />
+      </NuxtLink>
+    </v-col>
+    <v-col cols="12" xs="12" sm="12" md="10">
       <v-col cols="12" sm="8" md="8" lg="6" class="mx-auto">
         <v-text-field
           v-model="place"
@@ -27,7 +32,7 @@
           </div>
         </div>
       </v-col>
-      <v-col cols="12">
+      <v-col cols="12" class="px-0">
         <LeafletMap v-if="forecastResults" :prediction="forecastResults" class="map" />
         <LeafletMap v-else class="map" />
       </v-col>
@@ -43,6 +48,7 @@
         class="mt-5"
       />
     </v-col>
+    </v-col>
   </v-row>
 </template>
 
@@ -52,6 +58,7 @@ import API from '@/services/API'
 import RealTime from '~/components/RealTime.vue'
 import LeafletMap from '@/components/LeafletMap.vue'
 import TabComponent from '@/components/TabComponent.vue'
+import LogoFindy from '~/components/LogoFindy.vue'
 // const provider = new OpenStreetMapProvider()
 
 export default {
@@ -59,7 +66,8 @@ export default {
   components: {
     RealTime,
     LeafletMap,
-    TabComponent
+    TabComponent,
+    LogoFindy
   },
   data () {
     return {
@@ -128,5 +136,15 @@ export default {
 
 .map {
   border: 1px solid #af429a;
+}
+
+.logo-search {
+  width: 250px;
+
+  /* height: 50px; */
+}
+
+.adjustment {
+  flex: 0 0 auto;
 }
 </style>

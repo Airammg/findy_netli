@@ -10,6 +10,7 @@
     return-object
     outlined
     dense
+    color="#af429a"
 
     @change=" () => $emit('updateMap', select.href)"
   />
@@ -19,12 +20,9 @@
 export default {
   data () {
     return {
-      pepe: 'Pepepe',
-      select: { name: 'Grey', href: '//tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png' },
+      select: { name: 'Findy', href: 'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png' },
       items: [
-        { name: 'Water', href: 'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png' },
-        // grey url not working properly
-        // { name: 'Grey', href: 'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png' },
+        { name: 'Findy', href: 'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png' },
         { name: 'Topo', href: 'http://{s}.tile.opentopomap.org/{z}/{x}/{y}.png' },
         { name: 'Street', href: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png' },
         { name: 'Watercolor', href: 'https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png' },

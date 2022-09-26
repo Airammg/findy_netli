@@ -1,12 +1,12 @@
 <template>
   <div>
     <v-card class="my-2 px-2" elevation="0">
-      <card-subtitle>
+      <v-card-subtitle>
         &#x21f5;{{ getMinAndMax }}
         <div class="title-name">
           {{ titlename }}
         </div>
-      </card-subtitle>
+      </v-card-subtitle>
       <v-sparkline
         class="sparkline"
         :value="selectedParam"

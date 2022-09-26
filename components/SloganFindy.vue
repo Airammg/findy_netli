@@ -1,15 +1,13 @@
 <template>
   <div class="slogan">
-    We <NuxtLink class="look-link" to="/search">
-      look up
-    </NuxtLink> for you.
+    We look up for you.
   </div>
 </template>
 
 <style scoped>
 .slogan {
-  font-size: 20px;
-  color: #a4a4a4;
+  font-size: 60px;
+  color: #fafafa;
 }
 
 .look-link {
