@@ -4,20 +4,11 @@
       <logo-findy class="logo" />
     </NuxtLink>
     <slogan-findy class="slogan" />
-    <!-- <button @click="getImage">
-        get image
-      </button> -->
-
     <div
       v-if="randomImage !== ''"
       :style="{backgroundImage:`url(${randomImage})`}"
       class="bg "
     />
-
-    <!-- <pre>
-
-        {{ randomImage }}
-      </pre> -->
   </div>
 </template>
 
@@ -86,7 +77,6 @@ export default {
   filter: blur(3px);
 }
 
-/* links transition */
 .page-enter-active,
 .page-leave-active {
   transition-property: opacity;

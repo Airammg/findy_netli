@@ -1,9 +1,7 @@
 <template>
   <v-card class="justify-center mx-0 pb-3" width="100%" elevation="5">
-    <!-- <v-card-title>{{ forecast.date }}</v-card-title> -->
 
     <div v-if="forecast" class="container-fluid px-3">
-      <!-- <img :src="forecast.day.condition.icon" alt=""> -->
       <v-card-title class="main-color location px-0">
         {{ selectedplace }}
       </v-card-title>

@@ -2,9 +2,6 @@
   <div id="app" width="100%">
     <v-app id="inspire">
       <v-card class="justify-center" width="100%" elevation="5">
-        <!-- <v-card-title background-color="#a8b030">
-          Three Days Forecast
-        </v-card-title> -->
         <v-tabs
           v-model="tab"
           background-color="#af429a"

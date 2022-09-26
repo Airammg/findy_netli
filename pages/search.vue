@@ -59,7 +59,6 @@ import RealTime from '~/components/RealTime.vue'
 import LeafletMap from '@/components/LeafletMap.vue'
 import TabComponent from '@/components/TabComponent.vue'
 import LogoFindy from '~/components/LogoFindy.vue'
-// const provider = new OpenStreetMapProvider()
 
 export default {
   name: 'SearchPage',
@@ -88,7 +87,6 @@ export default {
     async showRealTime () {
       if (this.place.length > 0) {
         this.realTimeResults = await API.searchRealTime(this.geoCoords)
-        // console.log(`Result of the request ${this.realTimeResults}`)
         this.geoResults = []
         this.place = ''
       }
@@ -97,7 +95,6 @@ export default {
       if (this.place.length > 0) {
         this.forecastResults = await API.searchForecast(this.geoCoords, '3')
         console.log(`Result of the request ${this.forecastResults}`)
-        // console.log(this.forecastResults)
         this.geoResults = []
         this.place = ''
       }
@@ -108,7 +105,6 @@ export default {
     asignCoord (lat, long) {
       this.geoCoords = lat.toString() + ',' + long.toString()
       console.log(`Geosearch result: ${this.geoResults[0]}`)
-      // console.log(this.geoCoords)
     },
     showChoice (suggestion) {
       this.selectedPlaceFull = suggestion
@@ -140,8 +136,6 @@ export default {
 
 .logo-search {
   width: 250px;
-
-  /* height: 50px; */
 }
 
 .adjustment {

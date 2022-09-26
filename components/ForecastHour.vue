@@ -1,6 +1,5 @@
 <template>
   <div v-if="hour" class="grey lighten-4 rounded-lg px-2">
-    <!-- <pre>{{ hour }} </pre> -->
     <div class="mb-5  rounded-lg">
       <v-row dense>
         <v-col v-for="(time, idx) in selectedHours" :key="idx" class="grey lighten-3 px-0 ">
@@ -13,11 +12,6 @@
         </v-col>
       </v-row>
     </div>
-    <!-- <pre>
-
-      {{ rainArray }}
-      {{ forecast.hour }}
-    </pre> -->
     <div class="switch-wrapper">
       <v-switch v-model="temperatureSwitch" label="Temp" color="#af429a" class=" d-inline-block switcher" />
       <v-switch v-model="windSwitch" label="Wind" color="#af429a" class=" d-inline-block switcher" />
@@ -115,9 +109,6 @@ export default {
 
 <style scoped>
 .switch-wrapper {
-  /* border-top: 1px dashed #af429a; */
-
-  /* border-bottom: 1px dashed #af429a; */
   margin-bottom: 10px;
   font-size: 10px;
 }

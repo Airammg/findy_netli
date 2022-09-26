@@ -3,12 +3,6 @@
     <v-card-title>Forecast weather</v-card-title>
     <v-card-text>
       <div v-if="forecast">
-        <!-- <br>
-        <h3>Response:
-          <pre>{{prediction.location}}</pre>
-        </h3>
-        <br> -->
-
         <div v-for="(fc, idx) in forecast.forecastday" :key="idx">
           <h3>{{ fc.date }}</h3>
           <div>Condition: {{ fc.day.condition.text }}</div>

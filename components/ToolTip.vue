@@ -3,13 +3,7 @@
     fluid
     class="text-right"
   >
-    <v-row
-      class=""
-    >
-      <!-- <v-col cols="12">
-        <img src="@/assets/information-outline.png" alt="Info icon" @click="show = !show">
-      </v-col> -->
-
+    <v-row>
       <v-col
         cols="12"
         class="text-right"
@@ -63,7 +57,6 @@
 </template>
 
 <script>
-// import { mdiInformationOutline } from '@mdi/js'
 import IconWind from '@/components/IconWind.vue'
 import IconSun from '@/components/IconSun.vue'
 import IconGust from '@/components/IconGust.vue'

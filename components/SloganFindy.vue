@@ -11,17 +11,12 @@
 }
 
 .look-link {
-  /* position: fixed; */
   color: #af429a;
   text-decoration: none;
   animation-name: my-animation;
   animation-duration: 1s;
   animation-direction: alternate;
   animation-iteration-count: infinite;
-
-  /* animation-timing-function: linear; */
-
-  /* animation: ; */
 }
 
 @keyframes my-animation {
