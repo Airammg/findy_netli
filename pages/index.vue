@@ -31,7 +31,7 @@ export default {
   },
   mounted () {
     this.getImage()
-    // this.triggerClick('logo-link')
+    this.triggerClick('logo-link')
   },
   methods: {
     async getImage () {
