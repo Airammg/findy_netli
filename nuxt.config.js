@@ -2,7 +2,7 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
-  mode: 'spa', // Global page headers: https://go.nuxtjs.dev/config-head
+  ssr: false, // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - findy_project',
     title: 'findy_project',
