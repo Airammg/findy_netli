@@ -3,6 +3,7 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
   ssr: false, // Global page headers: https://go.nuxtjs.dev/config-head
+  target: 'static',
   head: {
     titleTemplate: '%s - findy_project',
     title: 'findy_project',
