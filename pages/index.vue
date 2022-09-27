@@ -19,7 +19,6 @@ import ImageAPI from '~/services/Unsplash'
 export default {
   name: 'HomePage',
   components: {
-    // LogoFindy,
     SloganFindy
   },
   data () {

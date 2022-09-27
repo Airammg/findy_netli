@@ -20,7 +20,6 @@
           dense
           @keyup="geosearch () "
         />
-        <!-- <pre>{{ geoResults }}</pre> -->
         <div class="faded-effect">
           <div v-for="(location, idx) in geoResults " :key="idx" class="px-5">
             <a
@@ -47,7 +46,6 @@
         :selectedplace="selectedPlaceFull"
         class="mt-5"
       />
-    </v-col>
     </v-col>
   </v-row>
 </template>
@@ -136,6 +134,7 @@ export default {
 
 .logo-search {
   width: 250px;
+
 }
 
 .adjustment {

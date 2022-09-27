@@ -3,7 +3,9 @@
     fluid
     class="text-right"
   >
-    <v-row>
+    <v-row
+      class=""
+    >
       <v-col
         cols="12"
         class="text-right"

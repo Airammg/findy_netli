@@ -1,6 +1,5 @@
 <template>
   <v-card class="justify-center mx-0 pb-3" width="100%" elevation="5">
-
     <div v-if="forecast" class="container-fluid px-3">
       <v-card-title class="main-color location px-0">
         {{ selectedplace }}
