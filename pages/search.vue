@@ -1,7 +1,7 @@
 <template>
   <v-row class="adjustment" justify="center">
     <v-col cols="12" class="mt-5" align="center">
-      <NuxtLink to="/" class="">
+      <NuxtLink to="/search" class="">
         <LogoFindy class="logo-search  " />
       </NuxtLink>
     </v-col>
@@ -126,6 +126,7 @@ export default {
   background: linear-gradient(to top, #fff, #af429a);
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  max-height: 150px;
 }
 
 .map {
@@ -134,7 +135,6 @@ export default {
 
 .logo-search {
   width: 250px;
-
 }
 
 .adjustment {

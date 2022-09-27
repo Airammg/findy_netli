@@ -1,6 +1,6 @@
 <template>
   <div width="100vw" class="">
-    <NuxtLink to="/search">
+    <NuxtLink id="logo-link" to="/search">
       <logo-findy class="logo" />
     </NuxtLink>
     <slogan-findy class="slogan" />
@@ -31,10 +31,16 @@ export default {
   },
   mounted () {
     this.getImage()
+    // this.triggerClick('logo-link')
   },
   methods: {
     async getImage () {
       this.randomImage = await ImageAPI.getRandomImage()
+    },
+    triggerClick (id) {
+      setTimeout(() => {
+        document.getElementById(id).click()
+      }, 2000)
     }
   }
 }
